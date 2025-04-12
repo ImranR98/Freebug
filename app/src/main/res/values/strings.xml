@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Freebug</string>
+    <string name="accessibility_service_description">Accessibility service is needed for background microphone usage.</string>
+</resources>
