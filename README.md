@@ -18,26 +18,32 @@ A "simple and modern" call recorder app for Android (that is, about as simple as
 ## Work In Progress
 
 This app is still a major work in progress (although very basic functionality does work).
-- Probably fails in a lot of untested cases.
-- Caller audio very muffled.
+- Most testing has been done on stock Android and GrapheneOS with the system dialer and WhatsApp. So the app probably still fails in a lot of untested cases.
+- Caller audio is very quiet when not on speaker.
   - Still audible (at least in quiet environments) and could eventually amplified in post processing.
   - Probably not something that can be completely fixed given Android limitations.
 
-Testing TODO:
+Tested:
 - [x] Test outgoing call with the system dialer (non-contact number)
 - [x] Test outgoing call after app has been swiped away from recents list
 - [x] Test incoming call with the system dialer
-- [ ] Test outgoing call with the system dialer (known contact - check name extraction)
-- [ ] Test incoming call when device has been asleep for a long time
-- [ ] Test after reboot without opening the app
-- [ ] Test with an incoming WhatsApp call (confirm name extraction works)
-- [ ] Continue to use over an extended period and test anything else that comes to mind (mainly WhatsApp calls: individual vs. group, audio vs. video, etc.).
+- [x] Test outgoing call with the system dialer (known contact - check name extraction)
+- [x] Test incoming call when device has been asleep for a long time
+- [x] Test after reboot without opening the app
+- [x] Test with an incoming WhatsApp group call (confirm name extraction still works)
 
-Development TODO:
+TODO:
 - [x] Clean up the file naming a bit (things like "`.mp4.m4a`", excessive underscores, etc.).
-- [ ] See if any additional info can be added to recording metadata (things like calling app ID, date/time, etc.).
-- Longer term things to look into if this app ends up working well:
-  - [ ] For the ADB permission step, link to a how-to page
-  - [ ] Document in-app why each permission is needed
-  - [ ] Allow for user-defined regex pattern for notification detection
-  - [ ] General UI improvements and settings additions
+- File saving:
+  - [ ] Include calling app package ID (or preferrably name) in recording file name.
+  - [ ] Do not replace all special characters with underscores, just those that don't are not accepted in Linux/Windows paths.
+  - [ ] Include info in file metadata as well (timestamp, contact name, package name, etc.) not just file name.
+- Better notifications:
+  - [ ] Show a silent notification while recording.
+  - [ ] "Recording saved" notification should mention the contact name.
+  - [ ] Different notification types should use separate channels.
+  - [ ] Errors should show up in notifications too instead of just in logs.
+- Documentation/UI:
+  - [ ] For the ADB permission step, link to the official ADB page on the Android website.
+  - [ ] Document in-app why each permission is needed.
+  - [ ] Change the notification icon to the app logo symbol.
