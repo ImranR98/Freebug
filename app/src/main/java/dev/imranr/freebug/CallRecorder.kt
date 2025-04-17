@@ -34,7 +34,7 @@ class CallRecorder : AccessibilityService() {
 
     private val eventObserver = Observer<RecordingEvent> { event ->
         when (event) {
-            is RecordingEvent.Start -> handleStartRecording(event.key, event.contactInfo)
+            is RecordingEvent.Start -> handleStartRecording(event.key, event.contactInfo, event.callingPackageName)
             is RecordingEvent.Stop -> handleStopRecording(event.key)
         }
     }
@@ -44,11 +44,11 @@ class CallRecorder : AccessibilityService() {
         RecordingEventBus.events.observeForever(eventObserver)
     }
 
-    private fun handleStartRecording(key: String, contactInfo: String) {
+    private fun handleStartRecording(key: String, contactInfo: String, callingPackageName: String) {
         if (activeSessions.containsKey(key)) return
 
-        Log.d(TAG, "Call started: $key")
-        RecordingSession(this, contactInfo).apply {
+        Log.d(TAG, "Starting recording: $key")
+        RecordingSession(this, contactInfo, callingPackageName).apply {
             startRecording(
                 onSuccess = { activeSessions[key] = this },
                 onError = { error -> Log.e(TAG, "Recording error: $error") }
@@ -57,7 +57,7 @@ class CallRecorder : AccessibilityService() {
     }
 
     private fun handleStopRecording(key: String) {
-        Log.d(TAG, "Call stopped: $key")
+        Log.d(TAG, "Stopping recording: $key")
         activeSessions.remove(key)?.stopRecording()
     }
 

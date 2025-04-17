@@ -9,7 +9,7 @@ import androidx.lifecycle.MutableLiveData
 import java.util.concurrent.ConcurrentHashMap
 
 sealed class RecordingEvent {
-    data class Start(val key: String, val contactInfo: String) : RecordingEvent()
+    data class Start(val key: String, val contactInfo: String, val callingPackageName: String) : RecordingEvent()
     data class Stop(val key: String) : RecordingEvent()
 }
 
@@ -64,7 +64,7 @@ class CallMonitor : NotificationListenerService() {
     private fun handleCallStart(notification: StatusBarNotification) {
         val contactInfo = extractContactInfo(notification)
         RecordingEventBus.postEvent(
-            RecordingEvent.Start(notification.key, contactInfo)
+            RecordingEvent.Start(notification.key, contactInfo, notification.packageName)
         )
     }
 

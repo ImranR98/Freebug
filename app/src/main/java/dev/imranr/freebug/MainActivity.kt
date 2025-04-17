@@ -2,8 +2,6 @@ package dev.imranr.freebug
 
 import android.Manifest
 import android.app.AppOpsManager
-import android.app.Notification
-import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.ClipData
 import android.content.ClipboardManager
@@ -47,7 +45,6 @@ import androidx.core.content.ContextCompat
 import dev.imranr.freebug.ui.theme.FreebugTheme
 
 const val TAG = "RecordingSession"
-const val notif_channel_id = "freebug_notifs"
 
 class MainActivity : ComponentActivity() {
     val hasPowerException = mutableStateOf(true)
@@ -172,18 +169,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-        notificationManager.createNotificationChannel(
-            NotificationChannel(
-                notif_channel_id,
-                "Freebug",
-                NotificationManager.IMPORTANCE_LOW
-            ).apply {
-                description = "Freebug call recording notification"
-                setSound(null, null)
-                lockscreenVisibility = Notification.VISIBILITY_SECRET
-                setShowBadge(false)
-                enableVibration(false)
-            })
+        notificationManager.createNotificationChannel(recordingNotificationChannel)
+        notificationManager.createNotificationChannel(recordingSavedNotificationChannel)
         permissionLauncher =
             registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
                 if (!isGranted) {
