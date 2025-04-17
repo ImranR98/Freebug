@@ -35,14 +35,12 @@ Tested:
 TODO:
 - [x] Clean up the file naming a bit (things like "`.mp4.m4a`", excessive underscores, etc.).
 - File saving:
-  - [ ] Include calling app package ID (or preferrably name) in recording file name.
-  - [ ] Do not replace all special characters with underscores, just those that don't are not accepted in Linux/Windows paths.
-  - [ ] Include info in file metadata as well (timestamp, contact name, package name, etc.) not just file name.
+  - [x] Include calling app package ID (or preferrably name) in recording file name.
+  - [x] Do not replace all special characters with underscores, just those that don't are not accepted in Linux/Windows paths.
 - Better notifications:
-  - [ ] Show a silent notification while recording.
-  - [ ] "Recording saved" notification should mention the contact name.
-  - [ ] Different notification types should use separate channels.
-  - [ ] Errors should show up in notifications too instead of just in logs.
+  - [x] Show a silent notification while recording.
+  - [x] "Recording saved" notification should mention the contact name.
+  - [x] Different notification types should use separate channels.
 - Documentation/UI:
   - [ ] For the ADB permission step, link to the official ADB page on the Android website.
   - [ ] Document in-app why each permission is needed.
