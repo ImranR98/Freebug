@@ -4,7 +4,7 @@ A simple and modern call recorder app for Android.
 
 ## About
 
-- Freebug records all incoming and outgoing across from a wide range of apps.
+- Freebug records all incoming and outgoing across a wide range of apps.
 - The app has been tested with the system dialer (Phone app) and WhatsApp on stock Android and GrapheneOS.
   - For other apps and OSes, your mileage may vary.
   - There is no definitive list of supported apps since Freebug takes an app-agnostic heuristics-based approach.
