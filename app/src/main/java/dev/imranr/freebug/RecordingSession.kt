@@ -50,8 +50,9 @@ val recordingNotificationChannel = NotificationChannel(
 
 class RecordingSession(
     private val context: Context,
-    private val contactInfo: String,
-    private val callingPackageName: String
+    val contactInfo: String,
+    val callingPackageName: String,
+    var stopRequested: Boolean = false
 ) {
     private var mediaRecorder: MediaRecorder? = null
     private var startTime: ZonedDateTime? = null
@@ -120,7 +121,7 @@ class RecordingSession(
         }
     }
 
-    private fun isRecordingActive(): Boolean {
+    fun isRecordingActive(): Boolean {
         return mediaRecorder != null && !isStopped
     }
 

@@ -10,7 +10,7 @@ import java.util.concurrent.ConcurrentHashMap
 
 sealed class RecordingEvent {
     data class Start(val key: String, val contactInfo: String, val callingPackageName: String) : RecordingEvent()
-    data class Stop(val key: String) : RecordingEvent()
+    data class PotentialStop(val key: String) : RecordingEvent()
 }
 
 object RecordingEventBus {
@@ -69,7 +69,7 @@ class CallMonitor : NotificationListenerService() {
     }
 
     private fun handleCallEnd(key: String) {
-        RecordingEventBus.postEvent(RecordingEvent.Stop(key))
+        RecordingEventBus.postEvent(RecordingEvent.PotentialStop(key))
     }
 
     override fun onNotificationPosted(sbn: StatusBarNotification?) {
