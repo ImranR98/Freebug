@@ -135,7 +135,7 @@ class MainActivity : ComponentActivity() {
                                 2 -> !hasNotificationPostPermission.value
                                 3 -> !hasSensitiveNotificationsPermission.value
                                 4 -> !hasNotificationPermission.value && hasSensitiveNotificationsPermission.value
-                                5 -> !hasAccessibilityPermission.value && hasSensitiveNotificationsPermission.value && hasSensitiveNotificationsPermission.value
+                                5 -> !hasAccessibilityPermission.value && hasSensitiveNotificationsPermission.value && hasNotificationPermission.value
                                 else -> false
                             },
                             onClick = {
@@ -294,22 +294,27 @@ class MainActivity : ComponentActivity() {
         )?.contains(service.flattenToString()) == true
     }
 
-    private fun checkSensitiveNotificationsPermission() = try {
-        val appOps = getSystemService(AppOpsManager::class.java)
-        val method = AppOpsManager::class.java.getMethod(
-            "unsafeCheckOpNoThrow",
-            String::class.java,
-            Int::class.javaPrimitiveType,
-            String::class.java
-        )
-        method.invoke(
-            appOps,
-            "android:receive_sensitive_notifications",
-            Process.myUid(),
-            packageName
-        ) as Int == AppOpsManager.MODE_ALLOWED
-    } catch (_: Exception) {
-        false
+    private fun checkSensitiveNotificationsPermission(): Boolean {
+        try {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+                return true
+            }
+            val appOps = getSystemService(AppOpsManager::class.java)
+            val method = AppOpsManager::class.java.getMethod(
+                "unsafeCheckOpNoThrow",
+                String::class.java,
+                Int::class.javaPrimitiveType,
+                String::class.java
+            )
+            return method.invoke(
+                appOps,
+                "android:receive_sensitive_notifications",
+                Process.myUid(),
+                packageName
+            ) as Int == AppOpsManager.MODE_ALLOWED
+        } catch (_: Exception) {
+            return false
+        }
     }
 
     private fun startServices() {
