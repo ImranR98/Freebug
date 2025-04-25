@@ -1,4 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Freebug</string>
+    <string name="call_text_detection_label">Call</string>
+    <string name="hangup_button_detection_label">Hang Up</string>
+    <string name="speaker_button_detection_label">Speaker</string>
+    <string name="mute_button_detection_label">Mute</string>
+    <string name="app_name" translatable="false">Freebug</string>
+    <string name="permission_mic_title">Allow Microphone Access</string>
+    <string name="permission_mic_desc">This is required to record call audio.</string>
+    <string name="permission_battery_title">Disable Battery Optimizations</string>
+    <string name="permission_battery_desc">This ensures Freebug is always ready to record calls.</string>
+    <string name="permission_notification_post_title">Allow Notification Posting</string>
+    <string name="permission_notification_post_desc">This enables recording status notifications.</string>
+    <string name="permission_sensitive_notifications_title">Allow Sensitive Notification Access</string>
+    <string name="permission_sensitive_notifications_desc">Allows reading notification text for call detection.</string>
+    <string name="permission_general_notifications_title">Allow General Notification Access</string>
+    <string name="permission_general_notifications_desc">Required to detect call start/end times.</string>
+    <string name="permission_accessibility_title">Enable Accessibility Service</string>
+    <string name="permission_accessibility_desc">Needed for background call recording.</string>
+    <string name="dialog_adb_title">ADB Permission Required</string>
+    <string name="dialog_adb_command">Run this command using Android Debug Bridge:</string>
+    <string name="dialog_adb_learn">Click here to learn more about ADB</string>
+    <string name="dialog_done">Done</string>
+    <string name="status_active">Freebug is active!\nAll calls will be recorded.</string>
+    <string name="status_inactive">Freebug is not active.\nPlease grant required permissions.</string>
+    <string name="toast_permission_warning">Please grant this permission in system settings</string>
+    <string name="content_desc_permission_info">Permission info</string>
     <string name="accessibility_service_description">Accessibility service is needed for background microphone usage.</string>
 </resources>

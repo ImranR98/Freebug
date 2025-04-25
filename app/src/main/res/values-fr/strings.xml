@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="call_text_detection_label">Appel</string>
+    <string name="hangup_button_detection_label">Raccrocher</string>
+    <string name="speaker_button_detection_label">Haut-parleur</string>
+    <string name="mute_button_detection_label">Muet</string>
+    <string name="permission_mic_title">Autoriser l\'accès au microphone</string>
+    <string name="permission_mic_desc">Nécessaire pour enregistrer les appels</string>
+    <string name="permission_battery_title">Désactiver l\'optimisation batterie</string>
+    <string name="permission_battery_desc">Garantit que Freebug est toujours prêt</string>
+    <string name="permission_notification_post_title">Autoriser les notifications</string>
+    <string name="permission_notification_post_desc">Notifications d\'état d\'enregistrement</string>
+    <string name="permission_sensitive_notifications_title">Accès aux notifications sensibles</string>
+    <string name="permission_sensitive_notifications_desc">Permet la lecture des notifications</string>
+    <string name="permission_general_notifications_title">Accès général aux notifications</string>
+    <string name="permission_general_notifications_desc">Nécessaire pour détecter les appels</string>
+    <string name="permission_accessibility_title">Activer le service d\'accessibilité</string>
+    <string name="permission_accessibility_desc">Enregistrement en arrière-plan requis</string>
+    <string name="dialog_adb_title">Permission ADB requise</string>
+    <string name="dialog_adb_command">Exécutez cette commande avec Android Debug Bridge:</string>
+    <string name="dialog_adb_learn">En savoir plus sur ADB</string>
+    <string name="dialog_done">Terminé</string>
+    <string name="status_active">Freebug actif !\nTous les appels seront enregistrés</string>
+    <string name="status_inactive">Freebug inactif\nVeuillez accorder les permissions</string>
+    <string name="toast_permission_warning">Accordez cette permission dans les paramètres</string>
+    <string name="content_desc_permission_info">Information de permission</string>
+    <string name="accessibility_service_description">Le service d\'accessibilité est nécessaire pour utiliser le microphone en arrière-plan.</string>
+</resources>

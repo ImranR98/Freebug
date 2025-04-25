@@ -9,7 +9,9 @@ import androidx.lifecycle.MutableLiveData
 import java.util.concurrent.ConcurrentHashMap
 
 sealed class RecordingEvent {
-    data class Start(val key: String, val contactInfo: String, val callingPackageName: String) : RecordingEvent()
+    data class Start(val key: String, val contactInfo: String, val callingPackageName: String) :
+        RecordingEvent()
+
     data class PotentialStop(val key: String) : RecordingEvent()
 }
 
@@ -38,11 +40,21 @@ class CallMonitor : NotificationListenerService() {
             extras.getString(Notification.EXTRA_TEXT),
             extras.getString(Notification.EXTRA_SUB_TEXT)
         ).any { text ->
-            text?.contains(Regex("""(call)""", RegexOption.IGNORE_CASE)) == true
+            text?.contains(
+                Regex(
+                    getString(R.string.call_text_detection_label),
+                    RegexOption.IGNORE_CASE
+                )
+            ) == true
         }
         val hasCallActions = notification.notification.actions?.any { action ->
             action.title.toString().lowercase().let {
-                it.contains("hang up") || it.contains("speaker") || it.contains("mute")
+                it.contains(
+                    getString(R.string.hangup_button_detection_label),
+                    ignoreCase = true
+                ) || it.contains(
+                    getString(R.string.speaker_button_detection_label), ignoreCase = true
+                ) || it.contains(getString(R.string.mute_button_detection_label), ignoreCase = true)
             }
         } == true
         return (
@@ -73,7 +85,7 @@ class CallMonitor : NotificationListenerService() {
     }
 
     override fun onNotificationPosted(sbn: StatusBarNotification?) {
-        sbn?.takeIf {  isCallNotification(it) }?.let { handleCallStart(it) }
+        sbn?.takeIf { isCallNotification(it) }?.let { handleCallStart(it) }
     }
 
     override fun onNotificationRemoved(sbn: StatusBarNotification?) {

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="call_text_detection_label">कॉल</string>
+    <string name="hangup_button_detection_label">कॉल समाप्त</string>
+    <string name="speaker_button_detection_label">स्पीकर</string>
+    <string name="mute_button_detection_label">म्यूट</string>
+    <string name="permission_mic_title">माइक्रोफ़ोन एक्सेस की अनुमति दें</string>
+    <string name="permission_mic_desc">कॉल ऑडियो रिकॉर्ड करने के लिए आवश्यक</string>
+    <string name="permission_battery_title">बैटरी ऑप्टिमाइज़ेशन अक्षम करें</string>
+    <string name="permission_battery_desc">Freebug को हमेशा तैयार रखता है</string>
+    <string name="permission_notification_post_title">नोटिफिकेशन पोस्ट करने की अनुमति दें</string>
+    <string name="permission_notification_post_desc">रिकॉर्डिंग स्थिति सूचनाएँ</string>
+    <string name="permission_sensitive_notifications_title">संवेदनशील नोटिफिकेशन एक्सेस</string>
+    <string name="permission_sensitive_notifications_desc">नोटिफिकेशन टेक्स्ट पढ़ने की अनुमति</string>
+    <string name="permission_general_notifications_title">सामान्य नोटिफिकेशन एक्सेस</string>
+    <string name="permission_general_notifications_desc">कॉल समय का पता लगाने के लिए आवश्यक</string>
+    <string name="permission_accessibility_title">एक्सेसिबिलिटी सेवा सक्षम करें</string>
+    <string name="permission_accessibility_desc">पृष्ठभूमि में कॉल रिकॉर्डिंग</string>
+    <string name="dialog_adb_title">ADB अनुमति आवश्यक</string>
+    <string name="dialog_adb_command">Android डिबग ब्रिज का उपयोग करें:</string>
+    <string name="dialog_adb_learn">ADB के बारे में अधिक जानें</string>
+    <string name="dialog_done">पूर्ण</string>
+    <string name="status_active">Freebug सक्रिय!\nसभी कॉल रिकॉर्ड की जाएंगी</string>
+    <string name="status_inactive">Freebug निष्क्रिय\nकृपया आवश्यक अनुमतियाँ दें</string>
+    <string name="toast_permission_warning">सिस्टम सेटिंग्स में यह अनुमति दें</string>
+    <string name="content_desc_permission_info">अनुमति जानकारी</string>
+    <string name="accessibility_service_description">पृष्ठभूमि में माइक्रोफ़ोन उपयोग के लिए एक्सेसिबिलिटी सेवा आवश्यक है।</string>
+</resources>

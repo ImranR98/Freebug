@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="call_text_detection_label">Simu</string>
+    <string name="hangup_button_detection_label">Kata Simu</string>
+    <string name="speaker_button_detection_label">Spika</string>
+    <string name="mute_button_detection_label">Zima Sauti</string>
+    <string name="permission_mic_title">Ruhusu Ufikiaji wa Kipaza Sauti</string>
+    <string name="permission_mic_desc">Inahitajika kurekodi simu</string>
+    <string name="permission_battery_title">Lemaza Uboreshaji wa Betri</string>
+    <string name="permission_battery_desc">Hakikisha Freebug iko tayari kila wakati</string>
+    <string name="permission_notification_post_title">Ruhusu Kutuma Arifa</string>
+    <string name="permission_notification_post_desc">Arifa za hali ya rekodi</string>
+    <string name="permission_sensitive_notifications_title">Ruhusu Ufikiaji wa Arifa Nyeti</string>
+    <string name="permission_sensitive_notifications_desc">Iruhusu kusoma maandishi ya arifa</string>
+    <string name="permission_general_notifications_title">Ruhusu Ufikiaji wa Arifa Kwa Ujumla</string>
+    <string name="permission_general_notifications_desc">Inahitajika kugundua simu</string>
+    <string name="permission_accessibility_title">Washa Huduma ya Ufikiaji</string>
+    <string name="permission_accessibility_desc">Urekodi wa simu kwa nyuma</string>
+    <string name="dialog_adb_title">Kibali cha ADB Kinahitajika</string>
+    <string name="dialog_adb_command">Tumia amri hii kwa Android Debug Bridge:</string>
+    <string name="dialog_adb_learn">Soma zaidi kuhusu ADB</string>
+    <string name="dialog_done">Imekamilika</string>
+    <string name="status_active">Freebug imeamilika!\nSimu zote zitaandikwa</string>
+    <string name="status_inactive">Freebug haijaamilika\nTafadhali kipa vibali vinavyohitajika</string>
+    <string name="toast_permission_warning">Tafadhali kipa kibali hiki katika mipangilio</string>
+    <string name="content_desc_permission_info">Maelezo ya kibali</string>
+    <string name="accessibility_service_description">Huduma ya ufikiaji inahitajika kwa matumizi ya kipaza sauti nyuma.</string>
+</resources>

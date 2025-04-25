@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="call_text_detection_label">通話</string>
+    <string name="hangup_button_detection_label">切る</string>
+    <string name="speaker_button_detection_label">スピーカー</string>
+    <string name="mute_button_detection_label">ミュート</string>
+    <string name="permission_mic_title">マイクへのアクセスを許可</string>
+    <string name="permission_mic_desc">通話の録音に必要です</string>
+    <string name="permission_battery_title">バッテリー最適化を無効</string>
+    <string name="permission_battery_desc">Freebugが常に準備完了状態に</string>
+    <string name="permission_notification_post_title">通知の投稿を許可</string>
+    <string name="permission_notification_post_desc">録音状態の通知</string>
+    <string name="permission_sensitive_notifications_title">機密通知へのアクセス</string>
+    <string name="permission_sensitive_notifications_desc">通知テキストの読み取りを許可</string>
+    <string name="permission_general_notifications_title">一般通知へのアクセス</string>
+    <string name="permission_general_notifications_desc">通話の検出に必要</string>
+    <string name="permission_accessibility_title">アクセシビリティサービスを有効</string>
+    <string name="permission_accessibility_desc">バックグラウンド録音が必要</string>
+    <string name="dialog_adb_title">ADB権限が必要</string>
+    <string name="dialog_adb_command">Android Debug Bridgeで実行:</string>
+    <string name="dialog_adb_learn">ADBの詳細情報</string>
+    <string name="dialog_done">完了</string>
+    <string name="status_active">Freebugが有効です！\nすべての通話が録音されます</string>
+    <string name="status_inactive">Freebugが無効です\n必要な権限を許可してください</string>
+    <string name="toast_permission_warning">システム設定でこの権限を許可</string>
+    <string name="content_desc_permission_info">権限情報</string>
+    <string name="accessibility_service_description">バックグラウンドでのマイク使用にはアクセシビリティサービスが必要です。</string>
+</resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="call_text_detection_label">Chamada</string>
+    <string name="hangup_button_detection_label">Desligar</string>
+    <string name="speaker_button_detection_label">Viva-voz</string>
+    <string name="mute_button_detection_label">Mudo</string>
+    <string name="permission_mic_title">Permitir acesso ao microfone</string>
+    <string name="permission_mic_desc">Necessário para gravar chamadas</string>
+    <string name="permission_battery_title">Desativar otimizações de bateria</string>
+    <string name="permission_battery_desc">Garante que o Freebug esteja sempre pronto</string>
+    <string name="permission_notification_post_title">Permitir notificações</string>
+    <string name="permission_notification_post_desc">Notificações de status de gravação</string>
+    <string name="permission_sensitive_notifications_title">Acesso a notificações sensíveis</string>
+    <string name="permission_sensitive_notifications_desc">Permite ler texto de notificações</string>
+    <string name="permission_general_notifications_title">Acesso geral a notificações</string>
+    <string name="permission_general_notifications_desc">Necessário para detectar chamadas</string>
+    <string name="permission_accessibility_title">Ativar serviço de acessibilidade</string>
+    <string name="permission_accessibility_desc">Gravação em segundo plano necessária</string>
+    <string name="dialog_adb_title">Permissão ADB necessária</string>
+    <string name="dialog_adb_command">Execute este comando com Android Debug Bridge:</string>
+    <string name="dialog_adb_learn">Saiba mais sobre ADB</string>
+    <string name="dialog_done">Concluído</string>
+    <string name="status_active">Freebug ativo!\nTodas as chamadas serão gravadas</string>
+    <string name="status_inactive">Freebug inativo\nConceda as permissões necessárias</string>
+    <string name="toast_permission_warning">Conceda esta permissão nas configurações</string>
+    <string name="content_desc_permission_info">Informações da permissão</string>
+    <string name="accessibility_service_description">O serviço de acessibilidade é necessário para uso do microfone em segundo plano.</string>
+</resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="call_text_detection_label">Anruf</string>
+    <string name="hangup_button_detection_label">Auflegen</string>
+    <string name="speaker_button_detection_label">Lautsprecher</string>
+    <string name="mute_button_detection_label">Stumm</string>
+    <string name="permission_mic_title">Mikrofonzugriff erlauben</string>
+    <string name="permission_mic_desc">Erforderlich zur Anrufaufzeichnung</string>
+    <string name="permission_battery_title">Batterieoptimierung deaktivieren</string>
+    <string name="permission_battery_desc">Stellt Freebug-Bereitschaft sicher</string>
+    <string name="permission_notification_post_title">Benachrichtigungen erlauben</string>
+    <string name="permission_notification_post_desc">Aufnahmestatus-Benachrichtigungen</string>
+    <string name="permission_sensitive_notifications_title">Zugriff auf sensible Benachrichtigungen</string>
+    <string name="permission_sensitive_notifications_desc">Erlaubt das Lesen von Benachrichtigungen</string>
+    <string name="permission_general_notifications_title">Allgemeiner Benachrichtigungszugriff</string>
+    <string name="permission_general_notifications_desc">Erforderlich zur Anruferkennung</string>
+    <string name="permission_accessibility_title">Barrierefreiheitsdienst aktivieren</string>
+    <string name="permission_accessibility_desc">Hintergrundaufzeichnung erforderlich</string>
+    <string name="dialog_adb_title">ADB-Berechtigung benötigt</string>
+    <string name="dialog_adb_command">Führen Sie diesen Befehl aus mit:</string>
+    <string name="dialog_adb_learn">Mehr über ADB erfahren</string>
+    <string name="dialog_done">Fertig</string>
+    <string name="status_active">Freebug aktiv!\nAlle Anrufe werden aufgezeichnet</string>
+    <string name="status_inactive">Freebug inaktiv\nBitte Berechtigungen erteilen</string>
+    <string name="toast_permission_warning">Erteilen Sie diese Berechtigung in den Einstellungen</string>
+    <string name="content_desc_permission_info">Berechtigungsinformation</string>
+    <string name="accessibility_service_description">Der Barrierefreiheitsdienst wird für die Mikrofonnutzung im Hintergrund benötigt.</string>
+</resources>

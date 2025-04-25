@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="call_text_detection_label">通话</string>
+    <string name="hangup_button_detection_label">挂断</string>
+    <string name="speaker_button_detection_label">扬声器</string>
+    <string name="mute_button_detection_label">静音</string>
+    <string name="permission_mic_title">允许麦克风访问</string>
+    <string name="permission_mic_desc">需要此权限以录制通话音频</string>
+    <string name="permission_battery_title">禁用电池优化</string>
+    <string name="permission_battery_desc">确保Freebug随时准备好录制通话</string>
+    <string name="permission_notification_post_title">允许通知发布</string>
+    <string name="permission_notification_post_desc">使Freebug能够通知您录制状态</string>
+    <string name="permission_sensitive_notifications_title">允许敏感通知访问</string>
+    <string name="permission_sensitive_notifications_desc">允许读取通知文本以实现通话检测</string>
+    <string name="permission_general_notifications_title">允许一般通知访问</string>
+    <string name="permission_general_notifications_desc">需要检测通话开始和结束时间</string>
+    <string name="permission_accessibility_title">启用无障碍服务</string>
+    <string name="permission_accessibility_desc">后台通话录制所需</string>
+    <string name="dialog_adb_title">需要ADB权限</string>
+    <string name="dialog_adb_command">使用Android调试桥运行此命令:</string>
+    <string name="dialog_adb_learn">点击此处了解ADB更多信息</string>
+    <string name="dialog_done">完成</string>
+    <string name="status_active">Freebug已激活！\n所有通话将被录制</string>
+    <string name="status_inactive">Freebug未激活\n请授予所需权限</string>
+    <string name="toast_permission_warning">请在系统设置中授予此权限</string>
+    <string name="content_desc_permission_info">权限信息</string>
+    <string name="accessibility_service_description">无障碍服务需要用于后台麦克风使用。</string>
+</resources>

@@ -87,35 +87,34 @@ class MainActivity : ComponentActivity() {
         val explanation: String
     )
 
-    private val permissions = listOf(
-        PermissionConfig(
-            "Allow Microphone Access",
-            "This is required to record call audio."
-        ),
-        PermissionConfig(
-            "Disable Battery Optimizations",
-            "This ensures that Freebug is always ready to record calls."
-        ),
-        PermissionConfig(
-            "Allow Notification Posting",
-            "This enables Freebug to notify you of recording status and results."
-        ),
-        PermissionConfig(
-            "Allow Sensitive Notification Access",
-            "This allows Freebug to read all notification text. That enables accurate call detection and contact name/number extraction."
-        ),
-        PermissionConfig(
-            "Allow General Notification Access",
-            "This allows Freebug to monitor notifications, which is required to tell when calls start and end."
-        ),
-        PermissionConfig(
-            "Enable Accessibility Service",
-            "This is required for Freebug to record calls even when it is not the currently open app."
-        )
-    )
-
     @Composable
     private fun MainContent() {
+        val permissions = listOf(
+            PermissionConfig(
+                getString(R.string.permission_mic_title),
+                getString(R.string.permission_mic_desc)
+            ),
+            PermissionConfig(
+                getString(R.string.permission_battery_title),
+                getString(R.string.permission_battery_desc)
+            ),
+            PermissionConfig(
+                getString(R.string.permission_notification_post_title),
+                getString(R.string.permission_notification_post_desc)
+            ),
+            PermissionConfig(
+                getString(R.string.permission_sensitive_notifications_title),
+                getString(R.string.permission_sensitive_notifications_desc)
+            ),
+            PermissionConfig(
+                getString(R.string.permission_general_notifications_title),
+                getString(R.string.permission_general_notifications_desc)
+            ),
+            PermissionConfig(
+                getString(R.string.permission_accessibility_title),
+                getString(R.string.permission_accessibility_desc)
+            )
+        )
         Scaffold { innerPadding ->
             Column(
                 modifier = Modifier
@@ -180,7 +179,7 @@ class MainActivity : ComponentActivity() {
             ) {
                 Icon(
                     imageVector = Icons.Outlined.Info,
-                    contentDescription = "Permission info",
+                    contentDescription = getString(R.string.content_desc_permission_info),
                     tint = MaterialTheme.colorScheme.primary.copy(
                         alpha = if (enabled) 1f else 0.5f
                     )
@@ -198,7 +197,7 @@ class MainActivity : ComponentActivity() {
                 text = { Text(config.explanation) },
                 confirmButton = {
                     Button(onClick = { currentExplanation.value = null }) {
-                        Text("OK")
+                        Text(getString(android.R.string.ok))
                     }
                 }
             )
@@ -213,21 +212,21 @@ class MainActivity : ComponentActivity() {
 
             AlertDialog(
                 onDismissRequest = { showADBDialog.value = false; updatePermissionStates() },
-                title = { Text("ADB Permission Required") },
+                title = { Text(getString(R.string.dialog_adb_title)) },
                 text = {
                     Column {
-                        Text("Run this command using Android Debug Bridge:")
+                        Text(getString(R.string.dialog_adb_command))
                         Spacer(Modifier.height(8.dp))
                         Text(
                             adbCommand,
                             fontFamily = FontFamily.Monospace,
                             modifier = Modifier.clickable {
-                                copyToClipboard("ADB Command", adbCommand)
+                                copyToClipboard(getString(R.string.dialog_adb_command), adbCommand)
                             }
                         )
                         Spacer(Modifier.height(16.dp))
                         Text(
-                            "Click here to learn more about ADB",
+                            getString(R.string.dialog_adb_learn),
                             color = MaterialTheme.colorScheme.primary,
                             style = TextStyle(textDecoration = TextDecoration.Underline),
                             modifier = Modifier.clickable {
@@ -241,7 +240,7 @@ class MainActivity : ComponentActivity() {
                 },
                 confirmButton = {
                     Button(onClick = { showADBDialog.value = false; updatePermissionStates() }) {
-                        Text("Done")
+                        Text(getString(R.string.dialog_done))
                     }
                 }
             )
@@ -325,7 +324,7 @@ class MainActivity : ComponentActivity() {
     private fun showPermissionWarning() {
         Toast.makeText(
             this,
-            "Please grant this permission in the system settings",
+            getString(R.string.toast_permission_warning),
             Toast.LENGTH_LONG
         ).show()
     }
@@ -339,7 +338,7 @@ class MainActivity : ComponentActivity() {
     @Composable
     private fun HeaderText() {
         Text(
-            "Freebug",
+            getString(R.string.app_name),
             fontSize = MaterialTheme.typography.headlineLarge.fontSize,
             fontWeight = FontWeight.Bold
         )
@@ -348,7 +347,7 @@ class MainActivity : ComponentActivity() {
     @Composable
     private fun StatusText() {
         Text(
-            if (hasAllRequiredPermissions()) "Freebug is active!\nAll calls will be recorded." else "Freebug is not active.\nPlease grant the required permissions.",
+            if (hasAllRequiredPermissions()) getString(R.string.status_active) else getString(R.string.status_inactive),
             fontWeight = FontWeight.Bold,
             style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Center,

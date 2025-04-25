@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="call_text_detection_label">مكالمة</string>
+    <string name="hangup_button_detection_label">إنهاء</string>
+    <string name="speaker_button_detection_label">مكبر الصوت</string>
+    <string name="mute_button_detection_label">كتم</string>
+    <string name="permission_mic_title">السماح بالوصول إلى الميكروفون</string>
+    <string name="permission_mic_desc">مطلوب لتسجيل صوت المكالمات</string>
+    <string name="permission_battery_title">تعطيل تحسين البطارية</string>
+    <string name="permission_battery_desc">يضمن أن فريباغ جاهز دائمًا</string>
+    <string name="permission_notification_post_title">السماح بنشر الإشعارات</string>
+    <string name="permission_notification_post_desc">إشعارات حالة التسجيل</string>
+    <string name="permission_sensitive_notifications_title">الوصول إلى الإشعارات الحساسة</string>
+    <string name="permission_sensitive_notifications_desc">السماح بقراءة نص الإشعارات</string>
+    <string name="permission_general_notifications_title">الوصول العام إلى الإشعارات</string>
+    <string name="permission_general_notifications_desc">مطلوب للكشف عن المكالمات</string>
+    <string name="permission_accessibility_title">تمكين خدمة إمكانية الوصول</string>
+    <string name="permission_accessibility_desc">التسجيل في الخلفية مطلوب</string>
+    <string name="dialog_adb_title">يتطلب إذن ADB</string>
+    <string name="dialog_adb_command">شغّل هذا الأمر باستخدام Android Debug Bridge:</string>
+    <string name="dialog_adb_learn">المزيد عن ADB</string>
+    <string name="dialog_done">تم</string>
+    <string name="status_active">!فريباغ نشط\nسيتم تسجيل جميع المكالمات</string>
+    <string name="status_inactive">فريباغ غير نشط\nيرجى منح الأذونات المطلوبة</string>
+    <string name="toast_permission_warning">منح هذا الإذن في إعدادات النظام</string>
+    <string name="content_desc_permission_info">معلومات الإذن</string>
+    <string name="accessibility_service_description">خدمة إمكانية الوصول مطلوبة لاستخدام الميكروفون في الخلفية.</string>
+</resources>

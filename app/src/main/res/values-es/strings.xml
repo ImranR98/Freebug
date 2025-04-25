@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="call_text_detection_label">Llamada</string>
+    <string name="hangup_button_detection_label">Colgar</string>
+    <string name="speaker_button_detection_label">Altavoz</string>
+    <string name="mute_button_detection_label">Silencio</string>
+    <string name="permission_mic_title">Permitir acceso al micrófono</string>
+    <string name="permission_mic_desc">Necesario para grabar audio de llamadas</string>
+    <string name="permission_battery_title">Desactivar optimización de batería</string>
+    <string name="permission_battery_desc">Garantiza que Freebug esté siempre listo</string>
+    <string name="permission_notification_post_title">Permitir notificaciones</string>
+    <string name="permission_notification_post_desc">Notificaciones del estado de grabación</string>
+    <string name="permission_sensitive_notifications_title">Acceso a notificaciones sensibles</string>
+    <string name="permission_sensitive_notifications_desc">Permite leer texto de notificaciones</string>
+    <string name="permission_general_notifications_title">Acceso general a notificaciones</string>
+    <string name="permission_general_notifications_desc">Necesario para detectar llamadas</string>
+    <string name="permission_accessibility_title">Activar servicio de accesibilidad</string>
+    <string name="permission_accessibility_desc">Necesario para grabación en segundo plano</string>
+    <string name="dialog_adb_title">Permiso ADB requerido</string>
+    <string name="dialog_adb_command">Ejecuta este comando con Android Debug Bridge:</string>
+    <string name="dialog_adb_learn">Más información sobre ADB</string>
+    <string name="dialog_done">Listo</string>
+    <string name="status_active">¡Freebug activo!\nTodas las llamadas se grabarán</string>
+    <string name="status_inactive">Freebug inactivo\nOtorgue los permisos necesarios</string>
+    <string name="toast_permission_warning">Otorgue este permiso en configuración del sistema</string>
+    <string name="content_desc_permission_info">Información de permiso</string>
+    <string name="accessibility_service_description">El servicio de accesibilidad es necesario para usar el micrófono en segundo plano.</string>
+</resources>

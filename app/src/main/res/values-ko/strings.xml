@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="call_text_detection_label">통화</string>
+    <string name="hangup_button_detection_label">전화 끊기</string>
+    <string name="speaker_button_detection_label">스피커</string>
+    <string name="mute_button_detection_label">음소거</string>
+    <string name="permission_mic_title">마이크 접근 허용</string>
+    <string name="permission_mic_desc">통화 녹음에 필요합니다</string>
+    <string name="permission_battery_title">배터리 최적화 비활성화</string>
+    <string name="permission_battery_desc">Freebug가 항상 준비되도록 합니다</string>
+    <string name="permission_notification_post_title">알림 게시 허용</string>
+    <string name="permission_notification_post_desc">녹음 상태 알림</string>
+    <string name="permission_sensitive_notifications_title">민감한 알림 접근 허용</string>
+    <string name="permission_sensitive_notifications_desc">알림 텍스트 읽기 허용</string>
+    <string name="permission_general_notifications_title">일반 알림 접근 허용</string>
+    <string name="permission_general_notifications_desc">통화 감지에 필요합니다</string>
+    <string name="permission_accessibility_title">접근성 서비스 활성화</string>
+    <string name="permission_accessibility_desc">백그라운드 녹음이 필요합니다</string>
+    <string name="dialog_adb_title">ADB 권한 필요</string>
+    <string name="dialog_adb_command">Android 디버그 브리지로 실행:</string>
+    <string name="dialog_adb_learn">ADB에 대해 자세히 알아보기</string>
+    <string name="dialog_done">완료</string>
+    <string name="status_active">Freebug가 활성화되었습니다!\n모든 통화가 녹음됩니다</string>
+    <string name="status_inactive">Freebug가 비활성화되었습니다\n필요한 권한을 허용하세요</string>
+    <string name="toast_permission_warning">시스템 설정에서 이 권한을 허용</string>
+    <string name="content_desc_permission_info">권한 정보</string>
+    <string name="accessibility_service_description">백그라운드 마이크 사용을 위해 접근성 서비스가 필요합니다.</string>
+</resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="call_text_detection_label">Вызов</string>
+    <string name="hangup_button_detection_label">Завершить</string>
+    <string name="speaker_button_detection_label">Громкая связь</string>
+    <string name="mute_button_detection_label">Без звука</string>
+    <string name="permission_mic_title">Разрешить доступ к микрофону</string>
+    <string name="permission_mic_desc">Необходимо для записи звонков</string>
+    <string name="permission_battery_title">Отключить оптимизацию батареи</string>
+    <string name="permission_battery_desc">Гарантирует готовность Freebug</string>
+    <string name="permission_notification_post_title">Разрешить уведомления</string>
+    <string name="permission_notification_post_desc">Уведомления о статусе записи</string>
+    <string name="permission_sensitive_notifications_title">Доступ к чувствительным уведомлениям</string>
+    <string name="permission_sensitive_notifications_desc">Разрешить чтение уведомлений</string>
+    <string name="permission_general_notifications_title">Общий доступ к уведомлениям</string>
+    <string name="permission_general_notifications_desc">Необходим для обнаружения звонков</string>
+    <string name="permission_accessibility_title">Включить службу доступности</string>
+    <string name="permission_accessibility_desc">Требуется фоновая запись</string>
+    <string name="dialog_adb_title">Требуется разрешение ADB</string>
+    <string name="dialog_adb_command">Выполните команду через Android Debug Bridge:</string>
+    <string name="dialog_adb_learn">Подробнее об ADB</string>
+    <string name="dialog_done">Готово</string>
+    <string name="status_active">Freebug активен!\nВсе звонки будут записаны</string>
+    <string name="status_inactive">Freebug неактивен\nПредоставьте разрешения</string>
+    <string name="toast_permission_warning">Предоставьте разрешение в настройках</string>
+    <string name="content_desc_permission_info">Информация о разрешении</string>
+    <string name="accessibility_service_description">Служба доступности требуется для использования микрофона в фоновом режиме.</string>
+</resources>
