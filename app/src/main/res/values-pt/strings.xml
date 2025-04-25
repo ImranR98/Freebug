@@ -25,4 +25,18 @@
     <string name="toast_permission_warning">Conceda esta permissão nas configurações</string>
     <string name="content_desc_permission_info">Informações da permissão</string>
     <string name="accessibility_service_description">O serviço de acessibilidade é necessário para uso do microfone em segundo plano.</string>
+    <string name="notification_channel_saved">Notificação de gravação salva</string>
+    <string name="notification_channel_saved_desc">Indica gravação bem-sucedida</string>
+    <string name="notification_channel_failed">Notificação de falha na gravação</string>
+    <string name="notification_channel_failed_desc">Indica falha na gravação</string>
+    <string name="notification_channel_recording">Notificação de gravação ativa</string>
+    <string name="notification_channel_recording_desc">Indica gravação em andamento</string>
+    <string name="notification_recording_title">Gravando chamada</string>
+    <string name="notification_recording_content">Chamada com %1$s em %2$s</string>
+    <string name="notification_saved_title">Chamada com %1$s salva</string>
+    <string name="notification_saved_content">Salvo em %1$s/CallRecordings</string>
+    <string name="notification_failed_title">Falha ao salvar chamada com %1$s</string>
+    <string name="notification_failed_content">Ocorreu um erro</string>
+    <string name="error_start_recording">Falha ao iniciar gravação: %1$s</string>
+    <string name="error_stop_recording">Falha ao parar gravação: %1$s</string>
 </resources>

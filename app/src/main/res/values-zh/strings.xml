@@ -25,4 +25,18 @@
     <string name="toast_permission_warning">请在系统设置中授予此权限</string>
     <string name="content_desc_permission_info">权限信息</string>
     <string name="accessibility_service_description">无障碍服务需要用于后台麦克风使用。</string>
+    <string name="notification_channel_saved">Freebug 录音保存通知</string>
+    <string name="notification_channel_saved_desc">表示通话已成功录制</string>
+    <string name="notification_channel_failed">Freebug 录音失败通知</string>
+    <string name="notification_channel_failed_desc">表示通话录制失败</string>
+    <string name="notification_channel_recording">Freebug 录音中通知</string>
+    <string name="notification_channel_recording_desc">表示正在录制通话</string>
+    <string name="notification_recording_title">正在录制通话</string>
+    <string name="notification_recording_content">正在录制%2$s的%1$s来电</string>
+    <string name="notification_saved_title">已保存与%1$s的通话</string>
+    <string name="notification_saved_content">保存至%1$s/CallRecordings</string>
+    <string name="notification_failed_title">无法保存与%1$s的通话</string>
+    <string name="notification_failed_content">发生错误</string>
+    <string name="error_start_recording">开始录制失败：%1$s</string>
+    <string name="error_stop_recording">停止录制失败：%1$s</string>
 </resources>

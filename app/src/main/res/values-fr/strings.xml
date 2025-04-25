@@ -25,4 +25,18 @@
     <string name="toast_permission_warning">Accordez cette permission dans les paramètres</string>
     <string name="content_desc_permission_info">Information de permission</string>
     <string name="accessibility_service_description">Le service d\'accessibilité est nécessaire pour utiliser le microphone en arrière-plan.</string>
+    <string name="notification_channel_saved">Notification d\'enregistrement réussi</string>
+    <string name="notification_channel_saved_desc">Indique un enregistrement réussi</string>
+    <string name="notification_channel_failed">Notification d\'échec d\'enregistrement</string>
+    <string name="notification_channel_failed_desc">Indique un échec d\'enregistrement</string>
+    <string name="notification_channel_recording">Notification d\'enregistrement en cours</string>
+    <string name="notification_channel_recording_desc">Indique un enregistrement actif</string>
+    <string name="notification_recording_title">Enregistrement en cours</string>
+    <string name="notification_recording_content">Appel avec %1$s dans %2$s</string>
+    <string name="notification_saved_title">Appel avec %1$s enregistré</string>
+    <string name="notification_saved_content">Enregistré dans %1$s/CallRecordings</string>
+    <string name="notification_failed_title">Échec de l\'enregistrement avec %1$s</string>
+    <string name="notification_failed_content">Une erreur est survenue</string>
+    <string name="error_start_recording">Échec du démarrage: %1$s</string>
+    <string name="error_stop_recording">Échec de l\'arrêt: %1$s</string>
 </resources>

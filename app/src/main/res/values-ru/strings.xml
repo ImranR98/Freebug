@@ -25,4 +25,18 @@
     <string name="toast_permission_warning">Предоставьте разрешение в настройках</string>
     <string name="content_desc_permission_info">Информация о разрешении</string>
     <string name="accessibility_service_description">Служба доступности требуется для использования микрофона в фоновом режиме.</string>
+    <string name="notification_channel_saved">Уведомление о сохранении записи</string>
+    <string name="notification_channel_saved_desc">Успешная запись разговора</string>
+    <string name="notification_channel_failed">Уведомление об ошибке записи</string>
+    <string name="notification_channel_failed_desc">Ошибка записи разговора</string>
+    <string name="notification_channel_recording">Уведомление о записи</string>
+    <string name="notification_channel_recording_desc">Идет запись разговора</string>
+    <string name="notification_recording_title">Идет запись</string>
+    <string name="notification_recording_content">Звонок с %1$s в %2$s</string>
+    <string name="notification_saved_title">Сохранен звонок с %1$s</string>
+    <string name="notification_saved_content">Сохранено в %1$s/CallRecordings</string>
+    <string name="notification_failed_title">Ошибка сохранения звонка с %1$s</string>
+    <string name="notification_failed_content">Произошла ошибка</string>
+    <string name="error_start_recording">Ошибка начала записи: %1$s</string>
+    <string name="error_stop_recording">Ошибка остановки записи: %1$s</string>
 </resources>

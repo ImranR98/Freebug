@@ -249,8 +249,8 @@ class MainActivity : ComponentActivity() {
 
     private fun setupNotificationChannels() {
         val notificationManager = getSystemService(NotificationManager::class.java)
-        notificationManager.createNotificationChannel(recordingNotificationChannel)
-        notificationManager.createNotificationChannel(recordingSavedNotificationChannel)
+        notificationManager.createNotificationChannel(getRecordingNotificationChannel(this))
+        notificationManager.createNotificationChannel(getRecordingSavedNotificationChannel(this))
     }
 
     private fun setupPermissionLauncher() {

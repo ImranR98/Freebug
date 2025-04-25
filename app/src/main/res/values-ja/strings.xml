@@ -25,4 +25,18 @@
     <string name="toast_permission_warning">システム設定でこの権限を許可</string>
     <string name="content_desc_permission_info">権限情報</string>
     <string name="accessibility_service_description">バックグラウンドでのマイク使用にはアクセシビリティサービスが必要です。</string>
+    <string name="notification_channel_saved">通話録音保存通知</string>
+    <string name="notification_channel_saved_desc">通話の録音が成功しました</string>
+    <string name="notification_channel_failed">通話録音失敗通知</string>
+    <string name="notification_channel_failed_desc">通話の録音に失敗しました</string>
+    <string name="notification_channel_recording">録音中通知</string>
+    <string name="notification_channel_recording_desc">通話を録音中です</string>
+    <string name="notification_recording_title">通話を録音中</string>
+    <string name="notification_recording_content">%2$sでの%1$sとの通話</string>
+    <string name="notification_saved_title">%1$sとの通話を保存しました</string>
+    <string name="notification_saved_content">%1$s/CallRecordingsに保存</string>
+    <string name="notification_failed_title">%1$sとの通話の保存に失敗しました</string>
+    <string name="notification_failed_content">エラーが発生しました</string>
+    <string name="error_start_recording">録音開始失敗: %1$s</string>
+    <string name="error_stop_recording">録音停止失敗: %1$s</string>
 </resources>

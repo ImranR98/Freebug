@@ -25,4 +25,18 @@
     <string name="toast_permission_warning">Erteilen Sie diese Berechtigung in den Einstellungen</string>
     <string name="content_desc_permission_info">Berechtigungsinformation</string>
     <string name="accessibility_service_description">Der Barrierefreiheitsdienst wird für die Mikrofonnutzung im Hintergrund benötigt.</string>
+    <string name="notification_channel_saved">Aufnahme gespeichert</string>
+    <string name="notification_channel_saved_desc">Erfolgreiche Anrufaufzeichnung</string>
+    <string name="notification_channel_failed">Aufnahme fehlgeschlagen</string>
+    <string name="notification_channel_failed_desc">Anrufaufzeichnung fehlgeschlagen</string>
+    <string name="notification_channel_recording">Aufnahme aktiv</string>
+    <string name="notification_channel_recording_desc">Anruf wird aufgezeichnet</string>
+    <string name="notification_recording_title">Aufnahme läuft</string>
+    <string name="notification_recording_content">Anruf mit %1$s in %2$s</string>
+    <string name="notification_saved_title">Anruf mit %1$s gespeichert</string>
+    <string name="notification_saved_content">Gespeichert in %1$s/CallRecordings</string>
+    <string name="notification_failed_title">Fehler beim Speichern mit %1$s</string>
+    <string name="notification_failed_content">Ein Fehler ist aufgetreten</string>
+    <string name="error_start_recording">Aufnahmestart fehlgeschlagen: %1$s</string>
+    <string name="error_stop_recording">Aufnahmestopp fehlgeschlagen: %1$s</string>
 </resources>

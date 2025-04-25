@@ -17,35 +17,41 @@ import java.io.IOException
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
-val recordingSavedNotificationChannel = NotificationChannel(
-    "freebug_recording_saved_notif",
-    "Freebug Recording Saved Notification",
-    NotificationManager.IMPORTANCE_LOW
-).apply {
-    description = "Indicates that Freebug successfully recorded a call"
-    lockscreenVisibility = Notification.VISIBILITY_SECRET
-    enableVibration(false)
+fun getRecordingSavedNotificationChannel (context: Context): NotificationChannel {
+    return NotificationChannel(
+        "freebug_recording_saved_notif",
+        context.getString(R.string.notification_channel_saved),
+        NotificationManager.IMPORTANCE_LOW
+    ).apply {
+        description = context.getString(R.string.notification_channel_saved_desc)
+        lockscreenVisibility = Notification.VISIBILITY_SECRET
+        enableVibration(false)
+    }
 }
 
-val recordingFailedNotificationChannel = NotificationChannel(
-    "freebug_recording_failed_notif",
-    "Freebug Recording Failed Notification",
-    NotificationManager.IMPORTANCE_HIGH
-).apply {
-    description = "Indicates that Freebug failed to record a call"
-    lockscreenVisibility = Notification.VISIBILITY_SECRET
+fun getRecordingFailedNotificationChannel (context: Context): NotificationChannel {
+    return NotificationChannel(
+        "freebug_recording_failed_notif",
+        context.getString(R.string.notification_channel_failed),
+        NotificationManager.IMPORTANCE_HIGH
+    ).apply {
+        description = context.getString(R.string.notification_channel_failed_desc)
+        lockscreenVisibility = Notification.VISIBILITY_SECRET
+    }
 }
 
-val recordingNotificationChannel = NotificationChannel(
-    "freebug_recording_notif",
-    "Freebug Recording Notification",
-    NotificationManager.IMPORTANCE_MIN
-).apply {
-    description = "Indicates that Freebug is recording a call"
-    setSound(null, null)
-    lockscreenVisibility = Notification.VISIBILITY_SECRET
-    setShowBadge(false)
-    enableVibration(false)
+fun getRecordingNotificationChannel (context: Context): NotificationChannel {
+    return NotificationChannel(
+        "freebug_recording_notif",
+        context.getString(R.string.notification_channel_recording),
+        NotificationManager.IMPORTANCE_MIN
+    ).apply {
+        description = context.getString(R.string.notification_channel_recording_desc)
+        setSound(null, null)
+        lockscreenVisibility = Notification.VISIBILITY_SECRET
+        setShowBadge(false)
+        enableVibration(false)
+    }
 }
 
 class RecordingSession(
@@ -58,6 +64,10 @@ class RecordingSession(
     private var startTime: ZonedDateTime? = null
     private var outputFile: File? = null
     private var isStopped = false
+
+    private val recordingNotificationChannel = getRecordingNotificationChannel(context)
+    private val recordingFailedNotificationChannel = getRecordingFailedNotificationChannel(context)
+    private val recordingSavedNotificationChannel = getRecordingSavedNotificationChannel(context)
 
     @SuppressLint("MissingPermission")
     fun startRecording(onSuccess: () -> Unit, onError: (String) -> Unit) {
@@ -85,13 +95,17 @@ class RecordingSession(
             }
         } catch (e: Exception) {
             cleanup()
-            onError("Failed to start recording: ${e.localizedMessage}")
+            onError(context.getString(R.string.error_start_recording, e.localizedMessage))
         }
 
         try {
             NotificationCompat.Builder(context, recordingNotificationChannel.id)
-                .setContentTitle("Recording call")
-                .setContentText("Call with $contactInfo in $callingPackageName")
+                .setContentTitle(context.getString(R.string.notification_recording_title))
+                .setContentText(context.getString(
+                    R.string.notification_recording_content,
+                    contactInfo,
+                    callingPackageName
+                ))
                 .setSmallIcon(R.drawable.ic_notification)
                 .setPriority(NotificationCompat.PRIORITY_MIN)
                 .build()
@@ -115,7 +129,7 @@ class RecordingSession(
             }
             saveRecording()
         } catch (e: Exception) {
-            Log.e(TAG, "Failed to stop recording: ${e.message}")
+            Log.e(TAG, context.getString(R.string.error_stop_recording, e.message))
         } finally {
             cleanup()
         }
@@ -158,8 +172,14 @@ class RecordingSession(
     @SuppressLint("MissingPermission")
     private fun showSuccessNotification() {
         NotificationCompat.Builder(context, recordingSavedNotificationChannel.id)
-            .setContentTitle("Saved call with $contactInfo")
-            .setContentText("Saved to /${Environment.DIRECTORY_RECORDINGS}/CallRecordings")
+            .setContentTitle(context.getString(
+                R.string.notification_saved_title,
+                contactInfo
+            ))
+            .setContentText(context.getString(
+                R.string.notification_saved_content,
+                Environment.DIRECTORY_RECORDINGS
+            ))
             .setSmallIcon(R.drawable.ic_notification)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .build()
@@ -187,8 +207,11 @@ class RecordingSession(
     @SuppressLint("MissingPermission")
     private fun showErrorNotification() {
         NotificationCompat.Builder(context, recordingFailedNotificationChannel.id)
-            .setContentTitle("Failed to save call with $contactInfo")
-            .setContentText("An error occurred")
+            .setContentTitle(context.getString(
+                R.string.notification_failed_title,
+                contactInfo
+            ))
+            .setContentText(context.getString(R.string.notification_failed_content))
             .setSmallIcon(R.drawable.ic_error)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .build()

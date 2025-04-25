@@ -26,4 +26,18 @@
     <string name="toast_permission_warning">Please grant this permission in system settings</string>
     <string name="content_desc_permission_info">Permission info</string>
     <string name="accessibility_service_description">Accessibility service is needed for background microphone usage.</string>
+    <string name="notification_channel_saved">Recording saved</string>
+    <string name="notification_channel_saved_desc">Indicates successful call recording</string>
+    <string name="notification_channel_failed">Recording failed</string>
+    <string name="notification_channel_failed_desc">Indicates failed call recording</string>
+    <string name="notification_channel_recording">Recording</string>
+    <string name="notification_channel_recording_desc">Indicates active call recording</string>
+    <string name="notification_recording_title">Recording call</string>
+    <string name="notification_recording_content">Call with %1$s in %2$s</string>
+    <string name="notification_saved_title">Saved call with %1$s</string>
+    <string name="notification_saved_content">Saved to %1$s/CallRecordings</string>
+    <string name="notification_failed_title">Failed to save call with %1$s</string>
+    <string name="notification_failed_content">An error occurred</string>
+    <string name="error_start_recording">Failed to start recording: %1$s</string>
+    <string name="error_stop_recording">Failed to stop recording: %1$s</string>
 </resources>

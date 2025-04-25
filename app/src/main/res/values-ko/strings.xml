@@ -25,4 +25,18 @@
     <string name="toast_permission_warning">시스템 설정에서 이 권한을 허용</string>
     <string name="content_desc_permission_info">권한 정보</string>
     <string name="accessibility_service_description">백그라운드 마이크 사용을 위해 접근성 서비스가 필요합니다.</string>
+    <string name="notification_channel_saved">통화 녹음 저장 알림</string>
+    <string name="notification_channel_saved_desc">통화 녹음이 성공적으로 완료됨</string>
+    <string name="notification_channel_failed">통화 녹음 실패 알림</string>
+    <string name="notification_channel_failed_desc">통화 녹음에 실패함</string>
+    <string name="notification_channel_recording">통화 녹음 중 알림</string>
+    <string name="notification_channel_recording_desc">통화 녹음 진행 중</string>
+    <string name="notification_recording_title">통화 녹음 중</string>
+    <string name="notification_recording_content">%2$s에서 %1$s과(와)의 통화</string>
+    <string name="notification_saved_title">%1$s과(와)의 통화 저장됨</string>
+    <string name="notification_saved_content">%1$s/CallRecordings에 저장됨</string>
+    <string name="notification_failed_title">%1$s과(와)의 통화 저장 실패</string>
+    <string name="notification_failed_content">오류가 발생했습니다</string>
+    <string name="error_start_recording">녹음 시작 실패: %1$s</string>
+    <string name="error_stop_recording">녹음 중지 실패: %1$s</string>
 </resources>
