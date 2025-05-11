@@ -6,8 +6,10 @@ import android.app.NotificationManager
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.ComponentName
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.media.MediaRecorder
 import android.os.Build
 import android.os.Bundle
 import android.os.PowerManager
@@ -20,18 +22,24 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -39,6 +47,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -52,6 +61,11 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import dev.imranr.freebug.ui.theme.FreebugTheme
 import androidx.core.net.toUri
+import androidx.compose.runtime.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.TextField
+import androidx.core.content.edit
 
 const val TAG = "RecordingSession"
 
@@ -64,6 +78,7 @@ class MainActivity : ComponentActivity() {
     private val hasAccessibilityPermission = mutableStateOf(true)
     private var showADBDialog = mutableStateOf(false)
     private var currentExplanation = mutableStateOf<PermissionConfig?>(null)
+    private var showSettingsDialog = mutableStateOf(false)
 
     private lateinit var permissionLauncher: ActivityResultLauncher<String>
 
@@ -78,6 +93,7 @@ class MainActivity : ComponentActivity() {
                 MainContent()
                 ExplanationDialog()
                 ADBDialog()
+                SettingsDialog()
             }
         }
     }
@@ -150,6 +166,20 @@ class MainActivity : ComponentActivity() {
                         )
                     }
                 }
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    Button(
+                        onClick = { showSettingsDialog.value = true },
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = MaterialTheme.colorScheme.secondary,
+                            contentColor = MaterialTheme.colorScheme.onSecondary
+                        )
+                    ) {
+                        Text(getString(R.string.settings))
+                    }
+                }
                 StatusText()
             }
         }
@@ -208,7 +238,8 @@ class MainActivity : ComponentActivity() {
     private fun ADBDialog() {
         if (showADBDialog.value) {
             val context = LocalContext.current
-            val adbCommand = "adb shell appops set $packageName RECEIVE_SENSITIVE_NOTIFICATIONS allow"
+            val adbCommand =
+                "adb shell appops set $packageName RECEIVE_SENSITIVE_NOTIFICATIONS allow"
 
             AlertDialog(
                 onDismissRequest = { showADBDialog.value = false; updatePermissionStates() },
@@ -230,10 +261,12 @@ class MainActivity : ComponentActivity() {
                             color = MaterialTheme.colorScheme.primary,
                             style = TextStyle(textDecoration = TextDecoration.Underline),
                             modifier = Modifier.clickable {
-                                context.startActivity(Intent(
-                                    Intent.ACTION_VIEW,
-                                    "https://developer.android.com/studio/command-line/adb".toUri()
-                                ))
+                                context.startActivity(
+                                    Intent(
+                                        Intent.ACTION_VIEW,
+                                        "https://developer.android.com/studio/command-line/adb".toUri()
+                                    )
+                                )
                             }
                         )
                     }
@@ -254,10 +287,11 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun setupPermissionLauncher() {
-        permissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) {
-            if (!it) showPermissionWarning()
-            updatePermissionStates()
-        }
+        permissionLauncher =
+            registerForActivityResult(ActivityResultContracts.RequestPermission()) {
+                if (!it) showPermissionWarning()
+                updatePermissionStates()
+            }
     }
 
     private fun updatePermissionStates() {
@@ -265,9 +299,13 @@ class MainActivity : ComponentActivity() {
             .isIgnoringBatteryOptimizations(packageName)
         hasNotificationPermission.value = NotificationManagerCompat.getEnabledListenerPackages(this)
             .contains(packageName)
-        hasNotificationPostPermission.value = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED
-        } else true
+        hasNotificationPostPermission.value =
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) == PackageManager.PERMISSION_GRANTED
+            } else true
         hasMicrophonePermission.value = ContextCompat.checkSelfPermission(
             this,
             Manifest.permission.RECORD_AUDIO
@@ -390,5 +428,144 @@ class MainActivity : ComponentActivity() {
     override fun onResume() {
         super.onResume()
         updatePermissionStates()
+    }
+
+    object AppPreferences {
+        private const val PREFS_NAME = "FreebugPrefs"
+        private const val KEY_AUDIO_SOURCE = "audio_source"
+
+        fun getAudioSource(context: Context): Int {
+            val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+            return prefs.getInt(KEY_AUDIO_SOURCE, MediaRecorder.AudioSource.VOICE_RECOGNITION)
+        }
+
+        fun setAudioSource(context: Context, source: Int) {
+            val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+            prefs.edit { putInt(KEY_AUDIO_SOURCE, source) }
+        }
+    }
+
+    object AudioSourceHelper {
+        private const val CLASS_NAME = "android.media.MediaRecorder\$AudioSource"
+        private val EXCLUDED_SOURCES = setOf(
+            "HOTWORD",
+            "DEFAULT",
+            "RADIO_TUNER",
+            "VOICE_UPLINK",
+            "VOICE_DOWNLINK",
+            "REMOTE_SUBMIX",
+            "VOICE_PERFORMANCE",
+            "ULTRASOUND"
+        )
+
+        private val HARDCODED_FALLBACK = listOf(
+            MediaRecorder.AudioSource.VOICE_RECOGNITION to "Voice Recognition",
+            MediaRecorder.AudioSource.MIC to "Microphone",
+            MediaRecorder.AudioSource.VOICE_COMMUNICATION to "Voice Communication"
+        ).filterNot { (_, name) -> EXCLUDED_SOURCES.any { name.contains(it, ignoreCase = true) } }
+
+        fun getAudioSources(): List<Pair<Int, String>> {
+            return try {
+                Class.forName(CLASS_NAME)
+                    .declaredFields
+                    .filter {
+                        Int::class.java.isAssignableFrom(it.type) &&
+                                java.lang.reflect.Modifier.isPublic(it.modifiers) &&
+                                java.lang.reflect.Modifier.isStatic(it.modifiers) &&
+                                java.lang.reflect.Modifier.isFinal(it.modifiers) &&
+                                !EXCLUDED_SOURCES.contains(it.name)
+                    }
+                    .mapNotNull { field ->
+                        val value = field.getInt(null)
+                        val name = formatName(field.name)
+                        Triple(value, name, field.name == "VOICE_RECOGNITION")
+                    }
+                    .sortedWith(
+                        compareByDescending<Triple<Int, String, Boolean>> { it.third }
+                            .thenBy { it.first }
+                    )
+                    .map { it.first to it.second }
+            } catch (e: Exception) {
+                // Manually order fallback list
+                HARDCODED_FALLBACK.sortedByDescending {
+                    it.second == "Voice Recognition"
+                }
+            }
+        }
+
+        private fun formatName(fieldName: String): String {
+            return fieldName
+                .lowercase()
+                .split("_")
+                .joinToString(" ") { it.replaceFirstChar { char -> char.titlecase() } }
+        }
+    }
+
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    private fun SettingsDialog() {
+        if (showSettingsDialog.value) {
+            val audioSources = remember { AudioSourceHelper.getAudioSources() }
+
+            val context = LocalContext.current
+            var expanded by remember { mutableStateOf(false) }
+            var selectedSource by remember { mutableStateOf(AppPreferences.getAudioSource(context)) }
+
+            AlertDialog(
+                onDismissRequest = { showSettingsDialog.value = false },
+                title = {
+                    Text(
+                        "Recording Settings",
+                        style = MaterialTheme.typography.headlineSmall
+                    )
+                },
+                text = {
+                    Column {
+                        ExposedDropdownMenuBox(
+                            expanded = expanded,
+                            onExpandedChange = { expanded = !expanded }
+                        ) {
+                            TextField(
+                                modifier = Modifier
+                                    .menuAnchor()
+                                    .fillMaxWidth(),
+                                readOnly = true,
+                                value = audioSources.first { it.first == selectedSource }.second,
+                                onValueChange = {},
+                                trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
+                                colors = ExposedDropdownMenuDefaults.textFieldColors(),
+                                shape = MaterialTheme.shapes.medium,
+                                label = { Text(getString(R.string.recorder_audio_source_label)) }
+                            )
+
+                            ExposedDropdownMenu(
+                                expanded = expanded,
+                                onDismissRequest = { expanded = false },
+                                modifier = Modifier.exposedDropdownSize()
+                            ) {
+                                audioSources.forEach { (source, name) ->
+                                    DropdownMenuItem(
+                                        text = { Text(name) },
+                                        onClick = {
+                                            selectedSource = source
+                                            AppPreferences.setAudioSource(context, source)
+                                            expanded = false
+                                        }
+                                    )
+                                }
+                            }
+                        }
+                    }
+                },
+                confirmButton = {
+                    Button(
+                        onClick = { showSettingsDialog.value = false },
+                    ) {
+                        Text("Close")
+                    }
+                },
+                shape = MaterialTheme.shapes.extraLarge
+            )
+        }
     }
 }

@@ -77,7 +77,7 @@ class RecordingSession(
 
         try {
             mediaRecorder = MediaRecorder(context).apply {
-                setAudioSource(MediaRecorder.AudioSource.VOICE_RECOGNITION)
+                setAudioSource(MainActivity.AppPreferences.getAudioSource(context))
                 setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
                 setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
                 setAudioEncodingBitRate(128000)

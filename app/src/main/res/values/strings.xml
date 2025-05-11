@@ -40,4 +40,7 @@
     <string name="notification_failed_content">An error occurred</string>
     <string name="error_start_recording">Failed to start recording: %1$s</string>
     <string name="error_stop_recording">Failed to stop recording: %1$s</string>
+    <string name="settings">Settings</string>
+    <string name="recording_settings">Recording Settings</string>
+    <string name="recorder_audio_source_label">Recorder audio source</string>
 </resources>

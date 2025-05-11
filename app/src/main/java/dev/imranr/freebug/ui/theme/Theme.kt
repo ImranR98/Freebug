@@ -1,6 +1,5 @@
 package dev.imranr.freebug.ui.theme
 
-import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
@@ -12,14 +11,14 @@ import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
     primary = redLight,
-    secondary = amberLight,
-    tertiary = greenLight
+    secondary = blueLight,
+    tertiary = amberLight
 )
 
 private val LightColorScheme = lightColorScheme(
     primary = redDark,
-    secondary = amberDark,
-    tertiary = greenDark
+    secondary = blueDark,
+    tertiary = amberDark
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
@@ -40,7 +39,7 @@ fun FreebugTheme(
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+        dynamicColor -> {
             val context = LocalContext.current
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
