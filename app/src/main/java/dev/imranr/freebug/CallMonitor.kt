@@ -54,7 +54,11 @@ class CallMonitor : NotificationListenerService() {
                     ignoreCase = true
                 ) || it.contains(
                     getString(R.string.speaker_button_detection_label), ignoreCase = true
-                ) || it.contains(getString(R.string.mute_button_detection_label), ignoreCase = true)
+                ) || it.contains(
+                    getString(R.string.mute_button_detection_label), ignoreCase = true
+                ) || it.contains(
+                    getString(R.string.leave_button_detection_label), ignoreCase = true
+                )
             }
         } == true
         return (
