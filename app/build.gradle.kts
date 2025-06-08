@@ -12,8 +12,8 @@ android {
         applicationId = "dev.imranr.freebug"
         minSdk = 31
         targetSdk = 35
-        versionCode = 7
-        versionName = "1.0.5"
+        versionCode = 8
+        versionName = "1.0.6"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

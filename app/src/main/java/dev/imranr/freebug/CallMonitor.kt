@@ -61,9 +61,23 @@ class CallMonitor : NotificationListenerService() {
                 )
             }
         } == true
+        val textStronglyIndicatesCall = listOf(
+            extras.getString(Notification.EXTRA_TITLE),
+            extras.getString(Notification.EXTRA_TEXT),
+            extras.getString(Notification.EXTRA_SUB_TEXT)
+        ).any { text ->
+            text?.contains(
+                Regex(
+                    getString(R.string.call_text_strong_detection_label),
+                    RegexOption.IGNORE_CASE
+                )
+            ) == true
+        }
+
         return (
-                textIndicatesCall &&
-                        hasCallActions &&
+                (
+                        (textIndicatesCall && hasCallActions) ||
+                                textStronglyIndicatesCall) &&
                         (flags and Notification.FLAG_ONGOING_EVENT != 0)
                 )
     }
