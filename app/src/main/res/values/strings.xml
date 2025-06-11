@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="call_text_detection_label">Call</string>
-    <string name="call_text_strong_detection_label">Meeting in progress</string>
+    <string name="call_text_strong_detection_label">(Meeting in progress|Ongoing meeting|currently in a meeting)</string>
     <string name="hangup_button_detection_label">Hang Up</string>
     <string name="speaker_button_detection_label">Speaker</string>
     <string name="mute_button_detection_label">Mute</string>
