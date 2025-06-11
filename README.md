@@ -24,6 +24,7 @@ A simple and modern call recorder app for Android.
 2. Each notification is categorized as a "call" or "not call" notification depending on some simple heuristics.
    - We exploit the fact that most call apps show a notification throughout the duration of the call, to tell if a call is ongoing.
    - This lets us take an app-agnostic approach (instead of having to write custom code for WhatsApp, Signal, Google Dialer, etc.) — if it looks like a call, we record it (obviously this could lead to false positives, the rates of which should go down as the filtering logic is improved over time).
+     - Note however, that this method is language-specific. Freebug works best in English, but some support for other languages exists (PRs to improve this are always welcome).
    - To do this properly, we must be able to read all the notification content, even for notifications that Android categorizes as "sensitive" (including call notifications). For this reason, we must have the `RECEIVE_SENSITIVE_NOTIFICATIONS` permission, which can only be granted via [ADB](https://developer.android.com/tools/adb).
 3. If an ongoing call is detected, we use an [AccessibilityService](https://developer.android.com/reference/android/accessibilityservice/AccessibilityService) to record it.
    - An AccessibilityService is used because it is the only kind of service that is allowed to start using the microphone when the recording app is not in the foreground.
